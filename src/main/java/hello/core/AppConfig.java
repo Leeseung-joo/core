@@ -16,14 +16,17 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig { //리팩토링후 AppConfig를 보면 역할과 구현 클래스 한눈에 들어옴
     @Bean
     public MemberService memberService(){
+        System.out.println("Call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("Call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
+        System.out.println("Call AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
                 DiscountPolicy());
