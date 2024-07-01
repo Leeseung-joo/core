@@ -29,10 +29,10 @@ public class AppConfig { //리팩토링후 AppConfig를 보면 역할과 구현 
         System.out.println("Call AppConfig.orderService");
         return new OrderServiceImpl(
                 memberRepository(),
-                DiscountPolicy());
+                discountPolicy());
     }
     @Bean
-    public DiscountPolicy DiscountPolicy() {
+    public DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 
