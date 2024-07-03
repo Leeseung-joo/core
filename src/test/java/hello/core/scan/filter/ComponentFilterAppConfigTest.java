@@ -1,6 +1,6 @@
 package hello.core.scan.filter;
 
-import hello.core.Application;
+import hello.core.CoreApplication;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -23,20 +23,14 @@ public class ComponentFilterAppConfigTest {
                 () -> ac.getBean("beanB", BeanB.class) //ac에서 BeanB클래스를 가진 객체를 요청 -> 비어있으면 NoSuchBeanDefinitionException 발생
         );
     }
+
     @Configuration
     @ComponentScan( //MyIncludeComponent.class가 포함된 것을 필터에 포함
             includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
-            excludeFilters =  @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+            excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
     )
-
-
-
-
-
-
-
-
-
-
-    static class ComponentFilterAppConfig{}
+    static class ComponentFilterAppConfig {
+    }
 }
+
+
